@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: landing-page-production
-          image: miqbalnawawi/landingpage:1.0          
+          image: $DOCKER_REGISTRY/$DOCKER_IMAGE_NAME:$BUILD_NUMBER          
 ---
 apiVersion: v1
 kind: Service
