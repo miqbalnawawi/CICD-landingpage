@@ -1,0 +1,58 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: landing-page-production
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: landing-page-production
+  namespace: landing-page-production
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: landing-page-production
+  template:
+    metadata:
+      labels:
+        name: landing-page-production
+    spec:
+      containers:
+        - name: landing-page-production
+          image: miqbalnawawi/landingpage:1.0          
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: landing-page-production
+  namespace: landing-page-production
+spec:
+  #type: LoadBalancer
+  ports:
+    - port: 80
+  selector:
+    name: landing-page-production
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: landing-page-production
+  namespace: landing-page-production
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/issuer: "landingpage-production"
+spec:
+  rules:
+  - host: landingpage-production.miqbalnawawi.site
+    http:
+      paths:
+      #- path: /belajar
+      - backend:
+          serviceName: landing-page-production
+          servicePort: 80
+  tls:
+    - hosts:
+      - landingpage-production.miqbalnawawi.site
+      secretName: landing-page-tls
