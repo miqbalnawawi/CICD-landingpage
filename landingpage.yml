@@ -17,6 +17,7 @@ spec:
     metadata:
       labels:
         name: landing-page-production
+        metadata : landing-page-production
     spec:
       containers:
         - name: landing-page-production
