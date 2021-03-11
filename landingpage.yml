@@ -42,7 +42,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     kubernetes.io/ingress.class: "nginx"
-    cert-manager.io/issuer: "landing-page-production"
+    cert-manager.io/issuer: "landingpage-production"
 spec:
   rules:
     - host: landingpage-production.miqbalnawawi.site
