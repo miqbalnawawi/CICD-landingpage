@@ -14,7 +14,6 @@ spec:
     matchLabels:
       name: landing-page-production
   template:
-    metadata:
       labels:
         name: landing-page-production
     spec:
