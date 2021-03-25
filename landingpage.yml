@@ -57,7 +57,7 @@ spec:
         - landingpage-production.miqbalnawawi.site
       secretName: landing-page-tls
 ---
-apiVersion: cert-manager.io/v1alpha2
+apiVersion: cert-manager.io/extensions/v1beta1
 kind: Issuer
 metadata:
  name: landingpage-production
